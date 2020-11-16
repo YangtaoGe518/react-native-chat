@@ -30,7 +30,7 @@ const MainTabScreen = () => (
             component={ContactScreen}
             options={{
                 tabBarLabel: 'Contacts',
-                tabBarColor: '#1f65ff',
+                tabBarColor: '#d02860',
                 tabBarIcon: ({ color }) => (
                     <Ionicons name="ios-contacts" color={color} size={26} />
                 ),

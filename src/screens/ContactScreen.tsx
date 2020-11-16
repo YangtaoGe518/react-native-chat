@@ -1,6 +1,26 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import {createStackNavigator} from "@react-navigation/stack";
+
+const ContactStack = createStackNavigator();
+
+const ContactStackScreen = (navigation: any) => (
+    <ContactStack.Navigator screenOptions={{
+        headerStyle: {
+            backgroundColor: '#d02860',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold'
+        }
+    }}>
+        <ContactStack.Screen name="Contacts" component={ContactScreen} options={{
+            title:'Contacts'
+        }} />
+    </ContactStack.Navigator>
+);
+
 
 const ContactScreen = (navigation: any) => {
 
@@ -16,7 +36,7 @@ const ContactScreen = (navigation: any) => {
     );
 };
 
-export default ContactScreen;
+export default ContactStackScreen;
 
 const styles = StyleSheet.create({
     container: {

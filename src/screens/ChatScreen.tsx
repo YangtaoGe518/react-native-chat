@@ -1,6 +1,25 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import {createStackNavigator} from "@react-navigation/stack";
+
+const ChatStack = createStackNavigator();
+
+const ChatStackScreen = (navigation: any) => (
+    <ChatStack.Navigator screenOptions={{
+        headerStyle: {
+            backgroundColor: '#009387',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold'
+        }
+    }}>
+        <ChatStack.Screen name="Chats" component={ChatScreen} options={{
+            title:'Chats'
+        }} />
+    </ChatStack.Navigator>
+);
 
 const ChatScreen = (navigation: any) => {
 
@@ -16,7 +35,7 @@ const ChatScreen = (navigation: any) => {
     );
 };
 
-export default ChatScreen;
+export default ChatStackScreen;
 
 const styles = StyleSheet.create({
     container: {
