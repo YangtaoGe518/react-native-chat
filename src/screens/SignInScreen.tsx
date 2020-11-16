@@ -15,7 +15,7 @@ import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome, Feather } from '@expo/vector-icons';
 
-const SignInScreen = (navigation: any) => {
+const SignInScreen = ({navigation}: any) => {
 
     const { colors } = useTheme();
 
@@ -62,7 +62,7 @@ const SignInScreen = (navigation: any) => {
         <View style={styles.container}>
             <StatusBar backgroundColor='#009387' barStyle="light-content"/>
             <View style={styles.header}>
-                <Text style={styles.text_header}>Welcome!</Text>
+                <Text style={styles.text_header}>Login</Text>
             </View>
             <Animatable.View
                 animation="fadeInUpBig"
