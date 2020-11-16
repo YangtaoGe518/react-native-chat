@@ -2,7 +2,7 @@ import {useTheme} from "@react-navigation/native";
 import {StatusBar, StyleSheet, Text, View} from "react-native";
 import React from "react";
 
-const SignUpScreen = (navigation: any) => {
+const SignUpScreen = ({navigation}: any) => {
 
     const { colors } = useTheme();
 

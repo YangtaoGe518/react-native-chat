@@ -13,7 +13,7 @@ import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const SplashScreen = (navigation: any) => {
+const SplashScreen = ({navigation}: any) => {
     const { colors } = useTheme();
 
     return (
@@ -39,7 +39,7 @@ const SplashScreen = (navigation: any) => {
                 }]}>Chat With Everyone Using React Native Chat App!</Text>
                 <Text style={styles.text}>Sign in with account</Text>
                 <View style={styles.button}>
-                    <TouchableOpacity onPress={()=>alert("Clicked")}>
+                    <TouchableOpacity onPress={()=>navigation.navigate('SignInScreen')}>
                         <LinearGradient
                             colors={['#08d4c4', '#01ab9d']}
                             style={styles.signIn}
