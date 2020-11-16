@@ -5,15 +5,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import MainTabScreen from "./src/screens/MainTabScreen";
+import RootScreen from "./src/screens/RootScreen";
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
       <NavigationContainer>
-        <Drawer.Navigator>
-          <Drawer.Screen name="Home" component={MainTabScreen} />
-        </Drawer.Navigator>
+          <RootScreen/>
+        {/*<Drawer.Navigator>*/}
+        {/*  <Drawer.Screen name="Home" component={MainTabScreen} />*/}
+        {/*</Drawer.Navigator>*/}
       </NavigationContainer>
   );
 }
