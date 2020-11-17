@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import {createStackNavigator} from "@react-navigation/stack";
+import { AuthContext } from "../components/context";
 
 const UserStack = createStackNavigator();
 
@@ -28,10 +29,14 @@ const UserScreen = (navigation: any) => {
 
     const theme = useTheme();
 
+    // @ts-ignore
+    const { signOut } = React.useContext(AuthContext);
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle= { theme.dark ? "light-content" : "dark-content" }/>
             <Text style={{color: colors.text}}>User Screen</Text>
+            <Button title={'Log Out'} onPress={() => {signOut()}}/>
         </View>
     );
 };

@@ -15,6 +15,8 @@ import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome, Feather } from '@expo/vector-icons';
 
+import { AuthContext } from "../components/context";
+
 const SignInScreen = ({navigation}: any) => {
 
     const { colors } = useTheme();
@@ -28,6 +30,8 @@ const SignInScreen = ({navigation}: any) => {
         secureTextEntry: true
     });
 
+    // @ts-ignore
+    const { signIn } = React.useContext(AuthContext);
     const textInputChange = (val: string) => {
         if( val.length !== 0 ) {
             setData({
@@ -133,15 +137,20 @@ const SignInScreen = ({navigation}: any) => {
                     <Text style={{color: '#009387', marginTop:15}}>Forgot password?</Text>
                 </TouchableOpacity>
                 <View style={styles.button}>
-                    <LinearGradient
-                        colors={['#08d4c4', '#01ab9d']}
+                    <TouchableOpacity
                         style={styles.signIn}
+                        onPress={() => {signIn()}}
                     >
-                        <Text style={[styles.textSign, {
-                            color:'#fff'
-                        }]}>Sign In</Text>
-                    </LinearGradient>
+                        <LinearGradient
+                            colors={['#08d4c4', '#01ab9d']}
+                            style={styles.signIn}
+                        >
+                            <Text style={[styles.textSign, {
+                                color:'#fff'
+                            }]}>Sign In</Text>
+                        </LinearGradient>
 
+                    </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('SignUpScreen')}
                         style={[styles.signIn, {
