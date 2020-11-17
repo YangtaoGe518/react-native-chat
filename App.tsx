@@ -12,7 +12,7 @@ import {AuthContext} from './src/components/context';
 
 import MainTabScreen from "./src/screens/MainTabScreen";
 import RootScreen from "./src/screens/RootScreen";
-import {userList, updateUserToken} from "./src/model/User";
+import { userList } from "./src/model/User";
 
 const Drawer = createDrawerNavigator();
 
@@ -74,7 +74,6 @@ export default function App() {
                 try {
                     userToken = uuidv4();
                     // console.log(userToken);
-                    await updateUserToken(validatedUsers[0].id, userToken);
                     await AsyncStorage.setItem('userToken', userToken);
                 } catch (e) {
                     console.log(e);
