@@ -1,9 +1,12 @@
 import {StatusBar} from 'expo-status-bar';
+import 'react-native-get-random-values';
 import React, {useEffect} from 'react';
 import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+// @ts-ignore
+import { v4 as uuidv4 } from 'uuid';
 
 import {AuthContext} from './src/components/context';
 
@@ -63,7 +66,8 @@ export default function App() {
             let userToken = '';
             if (userName === 'user' && password === 'password') {
                 try {
-                    userToken = 'token';
+                    userToken = uuidv4();
+                    // console.log(userToken);
                     await AsyncStorage.setItem('userToken', userToken);
                 } catch (e) {
                     console.log(e);
