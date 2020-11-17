@@ -5,7 +5,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 
 const ContactStack = createStackNavigator();
 
-const ContactStackScreen = (navigation: any) => (
+const ContactStackScreen = ({navigation}: any) => (
     <ContactStack.Navigator screenOptions={{
         headerStyle: {
             backgroundColor: '#d02860',
