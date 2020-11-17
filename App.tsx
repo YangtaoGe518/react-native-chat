@@ -16,9 +16,6 @@ import RootScreen from "./src/screens/RootScreen";
 const Drawer = createDrawerNavigator();
 
 export default function App() {
-    // const [isLoading, setIsLoading] = React.useState(true);
-    // const [userToken, setUserToken] = React.useState('');
-
     const initialLoginState = {
         isLoading: true,
         userName: '',
@@ -61,8 +58,6 @@ export default function App() {
 
     const authContext = React.useMemo(() => ({
         signIn: async (userName: string, password: string) => {
-            // setUserToken('token');
-            // setIsLoading(false);
             let userToken = '';
             if (userName === 'user' && password === 'password') {
                 try {
@@ -76,8 +71,6 @@ export default function App() {
             dispatch({type: 'LOGIN', id: userName, token: userToken});
         },
         signOut: async () => {
-            // setUserToken('');
-            // setIsLoading(false);
             try {
                 await AsyncStorage.removeItem('userToken');
             } catch (e) {
@@ -86,8 +79,7 @@ export default function App() {
             dispatch({type: 'LOGOUT'});
         },
         signUp: () => {
-            // setUserToken('token');
-            // setIsLoading(false);
+            // implement signUp here
         },
     }), []);
 
