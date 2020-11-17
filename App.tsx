@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {AuthContext} from './src/components/context';
 
@@ -56,19 +57,29 @@ export default function App() {
     const [loginState, dispatch] = React.useReducer(loginReducer, initialLoginState);
 
     const authContext = React.useMemo(() => ({
-        signIn: (userName: string, password: string) => {
+        signIn: async (userName: string, password: string) => {
             // setUserToken('token');
             // setIsLoading(false);
             let userToken = '';
-            if (userName === 'user' && password === 'password'){
-                userToken = 'token';
+            if (userName === 'user' && password === 'password') {
+                try {
+                    userToken = 'token';
+                    await AsyncStorage.setItem('userToken', userToken);
+                } catch (e) {
+                    console.log(e);
+                }
             }
-            dispatch({ type: 'LOGIN', id: userName, token: userToken });
+            dispatch({type: 'LOGIN', id: userName, token: userToken});
         },
-        signOut: () => {
+        signOut: async () => {
             // setUserToken('');
             // setIsLoading(false);
-            dispatch({ type: 'LOGOUT' });
+            try {
+                await AsyncStorage.removeItem('userToken');
+            } catch (e) {
+                console.log(e);
+            }
+            dispatch({type: 'LOGOUT'});
         },
         signUp: () => {
             // setUserToken('token');
