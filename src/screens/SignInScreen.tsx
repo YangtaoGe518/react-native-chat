@@ -169,7 +169,7 @@ const SignInScreen = ({navigation}: any) => {
                         }
                     </TouchableOpacity>
                 </View>
-                { data.isValidUser ? null :
+                { data.isValidPassword ? null :
                     <Animatable.View animation="fadeInLeft" duration={500}>
                         <Text style={styles.errorMsg}>Password must be longer than 8 characters.</Text>
                     </Animatable.View>
