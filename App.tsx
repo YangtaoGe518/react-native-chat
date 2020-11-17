@@ -1,7 +1,7 @@
 import {StatusBar} from 'expo-status-bar';
 import 'react-native-get-random-values';
 import React, {useEffect} from 'react';
-import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, Alert, StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -12,6 +12,7 @@ import {AuthContext} from './src/components/context';
 
 import MainTabScreen from "./src/screens/MainTabScreen";
 import RootScreen from "./src/screens/RootScreen";
+import {userList, updateUserToken} from "./src/model/User";
 
 const Drawer = createDrawerNavigator();
 
@@ -57,18 +58,30 @@ export default function App() {
     const [loginState, dispatch] = React.useReducer(loginReducer, initialLoginState);
 
     const authContext = React.useMemo(() => ({
-        signIn: async (userName: string, password: string) => {
+        signIn: async (username: string, password: string) => {
             let userToken = '';
-            if (userName === 'admin' && password === 'administration') {
+
+            const validatedUsers = userList.filter((item) => {
+                return username === item.username && password === item.password;
+            });
+
+            if (validatedUsers.length === 0){
+                Alert.alert('Invalid User', 'Username or password is incorrect.', [
+                    {text: 'Okay'}
+                ]);
+                return;
+            } else {
                 try {
                     userToken = uuidv4();
                     // console.log(userToken);
+                    await updateUserToken(validatedUsers[0].id, userToken);
                     await AsyncStorage.setItem('userToken', userToken);
                 } catch (e) {
                     console.log(e);
                 }
             }
-            dispatch({type: 'LOGIN', id: userName, token: userToken});
+
+            dispatch({type: 'LOGIN', id: username, token: userToken});
         },
         signOut: async () => {
             try {

@@ -17,6 +17,8 @@ import { FontAwesome, Feather } from '@expo/vector-icons';
 
 import { AuthContext } from "../components/context";
 
+import { userList }from "../model/User";
+
 const SignInScreen = ({navigation}: any) => {
 
     const { colors } = useTheme();
@@ -90,6 +92,14 @@ const SignInScreen = ({navigation}: any) => {
     }
 
     const loginHandle = (username: string, password: string) => {
+
+        if ( data.username.length === 0 || data.password.length === 0 ) {
+            Alert.alert('Error Input', 'Username or password field cannot be empty.', [
+                {text: 'Okay'}
+            ]);
+            return;
+        }
+
         signIn(username, password);
     }
 
