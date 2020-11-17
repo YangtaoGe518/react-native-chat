@@ -59,7 +59,7 @@ export default function App() {
     const authContext = React.useMemo(() => ({
         signIn: async (userName: string, password: string) => {
             let userToken = '';
-            if (userName === 'user' && password === 'password') {
+            if (userName === 'admin' && password === 'administration') {
                 try {
                     userToken = uuidv4();
                     // console.log(userToken);

@@ -27,32 +27,45 @@ const SignInScreen = ({navigation}: any) => {
         username: '',
         password: '',
         check_textInputChange: false,
-        secureTextEntry: true
+        secureTextEntry: true,
+        isValidUser: true,
+        isValidPassword: true,
     });
 
     // @ts-ignore
     const { signIn } = React.useContext(AuthContext);
     const textInputChange = (val: string) => {
-        if( val.length !== 0 ) {
+        if( val.trim().length >= 4 ) {
             setData({
                 ...data,
                 username: val,
-                check_textInputChange: true
+                check_textInputChange: true,
+                isValidUser: true
             });
         } else {
             setData({
                 ...data,
                 username: val,
-                check_textInputChange: false
+                check_textInputChange: false,
+                isValidUser: false
             });
         }
     }
 
     const handlePasswordChange = (val: string) => {
-        setData({
-            ...data,
-            password: val
-        });
+        if( val.trim().length >= 8 ) {
+            setData({
+                ...data,
+                password: val,
+                isValidPassword: true
+            });
+        } else {
+            setData({
+                ...data,
+                password: val,
+                isValidPassword: false
+            });
+        }
     }
 
     const updateSecureTextEntry = () => {
@@ -60,6 +73,20 @@ const SignInScreen = ({navigation}: any) => {
             ...data,
             secureTextEntry: !data.secureTextEntry
         });
+    }
+
+    const handleValidUser = (val: string) => {
+        if( val.trim().length >= 4 ) {
+            setData({
+                ...data,
+                isValidUser: true
+            });
+        } else {
+            setData({
+                ...data,
+                isValidUser: false
+            });
+        }
     }
 
     const loginHandle = (username: string, password: string) => {
@@ -88,6 +115,7 @@ const SignInScreen = ({navigation}: any) => {
                         style={styles.textInput}
                         autoCapitalize="none"
                         onChangeText={(val) => textInputChange(val)}
+                        onEndEditing={(e)=>handleValidUser(e.nativeEvent.text)}
                     />
                     {data.check_textInputChange ?
                         <Animatable.View
@@ -101,6 +129,11 @@ const SignInScreen = ({navigation}: any) => {
                         </Animatable.View>
                         : null}
                 </View>
+                { data.isValidUser ? null :
+                    <Animatable.View animation="fadeInLeft" duration={500}>
+                        <Text style={styles.errorMsg}>User Name must be longer than 4 characters.</Text>
+                    </Animatable.View>
+                }
 
                 <Text style={[styles.text_footer, {
                     marginTop: 35
@@ -136,6 +169,11 @@ const SignInScreen = ({navigation}: any) => {
                         }
                     </TouchableOpacity>
                 </View>
+                { data.isValidUser ? null :
+                    <Animatable.View animation="fadeInLeft" duration={500}>
+                        <Text style={styles.errorMsg}>Password must be longer than 8 characters.</Text>
+                    </Animatable.View>
+                }
 
                 <TouchableOpacity>
                     <Text style={{color: '#009387', marginTop:15}}>Forgot password?</Text>
