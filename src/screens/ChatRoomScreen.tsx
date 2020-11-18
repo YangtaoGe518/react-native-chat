@@ -1,6 +1,6 @@
 import React from "react";
-import { ImageBackground, FlatList } from "react-native";
-import { useRoute } from '@react-navigation/native';
+import {ImageBackground, FlatList, KeyboardAvoidingView, Platform, StyleSheet, View} from "react-native";
+import {useRoute} from '@react-navigation/native';
 import ChatMessage from "../components/ChatMessage";
 
 // @ts-ignore
@@ -13,15 +13,31 @@ const ChatRoomScreen = () => {
 
     return (
         <ImageBackground style={{width: '100%', height: '100%'}} source={BackgroundImg}>
-            <FlatList
-                data={chatRoomData.messages}
-                renderItem={({ item }) => <ChatMessage message={item} />}
-                inverted
-            />
-            <InputBox/>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === 'ios' ? "padding" : "height"}
+                style={styles.container}
+                keyboardVerticalOffset = {75}
+            >
 
+                <FlatList
+                    data={chatRoomData.messages}
+                    renderItem={({item}) => <ChatMessage message={item}/>}
+                    inverted
+                />
+                <InputBox/>
+
+            </KeyboardAvoidingView>
         </ImageBackground>
     );
 }
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    }
+})
+
 export default ChatRoomScreen
+
+
+
