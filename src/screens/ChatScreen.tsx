@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, StatusBar, FlatList} from 'react-native';
+import {View, Text, Button, StyleSheet, StatusBar, FlatList} from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import {createStackNavigator} from "@react-navigation/stack";
 
 import ChatListItem from '../components/ChatListItem';
 import chatRooms from '../data/ChatRooms';
+import ChatRoomScreen from "./ChatRoomScreen";
 
 const ChatStack = createStackNavigator();
 
@@ -21,10 +22,13 @@ const ChatStackScreen = ({navigation}: any) => (
         <ChatStack.Screen name="Chats" component={ChatScreen} options={{
             title:'Chats'
         }} />
+        <ChatStack.Screen name="ChatRoom" component={ChatRoomScreen} options={{
+            title:'Some Room'
+        }} />
     </ChatStack.Navigator>
 );
 
-const ChatScreen = (navigation: any) => {
+const ChatScreen = ({navigation}: any) => {
 
     const { colors } = useTheme();
 
