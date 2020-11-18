@@ -5,21 +5,19 @@ export interface User {
 }
 
 export type Member = {
-    id: String;
-    name: String;
-    imageUri: String;
-    status: String;
+    id: string,
+    name: string,
+    imageUri: string,
 }
 
 export type Message = {
-    id: String;
-    content: string;
-    createdAt: string;
-    member: Member;
+    id: string,
+    content: string,
+    createdAt: string,
 }
 
 export type ChatRoom = {
-    id: String;
-    members: Member[];
-    lastMessage: Message;
+    id: string;
+    members: Member[],
+    lastMessage: Message,
 }
