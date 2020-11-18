@@ -6,6 +6,7 @@ import ChatMessage from "../components/ChatMessage";
 // @ts-ignore
 import BackgroundImg from '../../assets/background.png';
 import chatRoomData from '../data/Chats';
+import InputBox from "../components/InputBox";
 
 const ChatRoomScreen = () => {
     const route = useRoute();
@@ -17,6 +18,7 @@ const ChatRoomScreen = () => {
                 renderItem={({ item }) => <ChatMessage message={item} />}
                 inverted
             />
+            <InputBox/>
 
         </ImageBackground>
     );
