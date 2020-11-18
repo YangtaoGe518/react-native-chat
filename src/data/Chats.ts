@@ -16,6 +16,7 @@ export default {
         member: {
             id: 'u1',
             name: 'Vadim',
+            imageUri: 'https://api.adorable.io/avatars/80/yangtao.ge@adorable.io.png',
         },
     }, {
         id: 'm2',
@@ -24,6 +25,7 @@ export default {
         member: {
             id: 'u2',
             name: 'Lukas',
+            imageUri: 'https://api.adorable.io/avatars/80/yangtao.ge@adorable.io.png',
         },
     }, {
         id: 'm3',
@@ -32,6 +34,7 @@ export default {
         member: {
             id: 'u2',
             name: 'Lukas',
+            imageUri: 'https://api.adorable.io/avatars/80/yangtao.ge@adorable.io.png',
         },
     }, {
         id: 'm4',
@@ -40,6 +43,7 @@ export default {
         member: {
             id: 'u1',
             name: 'Vadim',
+            imageUri: 'https://api.adorable.io/avatars/80/yangtao.ge@adorable.io.png',
         },
     }, {
         id: 'm5',
@@ -48,6 +52,7 @@ export default {
         member: {
             id: 'u1',
             name: 'Vadim',
+            imageUri: 'https://api.adorable.io/avatars/80/yangtao.ge@adorable.io.png',
         },
     }, {
         id: 'm6',
@@ -56,6 +61,7 @@ export default {
         member: {
             id: 'u2',
             name: 'Lukas',
+            imageUri: 'https://api.adorable.io/avatars/80/yangtao.ge@adorable.io.png',
         },
     }, {
         id: 'm7',
@@ -64,6 +70,7 @@ export default {
         member: {
             id: 'u1',
             name: 'Vadim',
+            imageUri: 'https://api.adorable.io/avatars/80/yangtao.ge@adorable.io.png',
         },
     }]
 }

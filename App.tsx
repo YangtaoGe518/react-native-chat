@@ -5,11 +5,6 @@ import {ActivityIndicator, Alert, StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
-import {
-    MaterialCommunityIcons,
-    MaterialIcons,
-    FontAwesome5,
-} from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
