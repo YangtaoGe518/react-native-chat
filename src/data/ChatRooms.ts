@@ -59,7 +59,7 @@ export default [{
     }],
     lastMessage: {
         id: 'm4',
-        content: 'Can you review my last merge',
+        content: 'Can you it review for me?',
         createdAt: '2020-11-11T14:48:00.000Z',
     }
 }, {
