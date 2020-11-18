@@ -5,7 +5,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 
 const ChatStack = createStackNavigator();
 
-const ChatStackScreen = (navigation: any) => (
+const ChatStackScreen = ({navigation}: any) => (
     <ChatStack.Navigator screenOptions={{
         headerStyle: {
             backgroundColor: '#009387',
