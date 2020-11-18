@@ -22,9 +22,14 @@ const ChatStackScreen = ({navigation}: any) => (
         <ChatStack.Screen name="Chats" component={ChatScreen} options={{
             title:'Chats'
         }} />
-        <ChatStack.Screen name="ChatRoom" component={ChatRoomScreen} options={{
-            title:'Some Room'
-        }} />
+        <ChatStack.Screen
+            name="ChatRoom"
+            component={ChatRoomScreen}
+            options={({route}) => ({
+                //@ts-ignore
+                title: route.params.name,
+            })}
+        />
     </ChatStack.Navigator>
 );
 
