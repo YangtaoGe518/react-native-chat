@@ -4,6 +4,7 @@ import React, {useEffect} from 'react';
 import {ActivityIndicator, Alert, StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
@@ -13,8 +14,9 @@ import {AuthContext} from './src/components/context';
 import MainTabScreen from "./src/screens/MainTabScreen";
 import RootScreen from "./src/screens/RootScreen";
 import { userList } from "./src/model/User";
+import ChatRoomScreen from "./src/screens/ChatRoomScreen";
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
     const initialLoginState = {
@@ -115,9 +117,29 @@ export default function App() {
         <AuthContext.Provider value={authContext}>
             <NavigationContainer>
                 { loginState.userToken !== '' ? (
-                    <Drawer.Navigator>
-                        <Drawer.Screen name="Home" component={MainTabScreen} />
-                    </Drawer.Navigator>
+                    <Stack.Navigator screenOptions={{
+                        headerStyle: {
+                            backgroundColor: '#009387',
+                        },
+                        headerTintColor: '#fff',
+                        headerTitleStyle: {
+                            fontWeight: 'bold'
+                        }
+                    }}>
+                        <Stack.Screen
+                            name="Home"
+                            component={MainTabScreen}
+                            options={{headerShown:false}}
+                        />
+                        <Stack.Screen
+                            name="ChatRoom"
+                            component={ChatRoomScreen}
+                            options={({route}) => ({
+                                //@ts-ignore
+                                title: route.params.name,
+                            })}
+                        />
+                    </Stack.Navigator>
                 ) :
                     <RootScreen/>
                 }
