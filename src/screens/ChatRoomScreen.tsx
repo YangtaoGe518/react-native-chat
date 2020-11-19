@@ -31,6 +31,10 @@ const ChatRoomScreen = () => {
         ).then((res) => {
             setMessages(res)
             // console.log(res)
+        }).catch((e) => {
+            if(e.name === 'NotFoundError'){
+                // setMessages([])
+            }
         })
     }
 
