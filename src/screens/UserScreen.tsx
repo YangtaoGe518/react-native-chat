@@ -3,6 +3,7 @@ import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import {createStackNavigator} from "@react-navigation/stack";
 import { AuthContext } from "../components/context";
+import LocalStorage from "../model/LocalStorage";
 
 const UserStack = createStackNavigator();
 
@@ -29,6 +30,15 @@ const UserScreen = (navigation: any) => {
 
     const theme = useTheme();
 
+    const removeAllMessages = async () => {
+        LocalStorage.clearMapForKey('chatroom')
+            .then(
+                () => {
+                    console.warn("Message Cleared!")
+                }
+            )
+    }
+
     // @ts-ignore
     const { signOut } = React.useContext(AuthContext);
 
@@ -37,6 +47,7 @@ const UserScreen = (navigation: any) => {
             <StatusBar barStyle= { theme.dark ? "light-content" : "dark-content" }/>
             <Text style={{color: colors.text}}>User Screen</Text>
             <Button title={'Log Out'} onPress={() => {signOut()}}/>
+            <Button title={'Clear Data'} onPress={() => {removeAllMessages()}}/>
         </View>
     );
 };
