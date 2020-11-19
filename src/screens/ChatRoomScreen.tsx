@@ -13,6 +13,9 @@ import LocalStorage from "../model/LocalStorage";
 const ChatRoomScreen = () => {
     const route = useRoute();
 
+    //@ts-ignore
+    const chatroomId = route.params.id;
+
     const [messages, setMessages] = useState([]);
 
     const getUserId = async () => {
@@ -24,7 +27,7 @@ const ChatRoomScreen = () => {
     }
     const getMessages = async () => {
         LocalStorage.load(
-            {key: 'chatroom', id: '1'}
+            {key: 'chatroom', id:chatroomId}
         ).then((res) => {
             setMessages(res)
             // console.log(res)
@@ -34,7 +37,7 @@ const ChatRoomScreen = () => {
     const saveMessages = async (messages: any) => {
         LocalStorage.save({
             key: 'chatroom',
-            id: '1',
+            id: chatroomId,
             data: messages
         })
     }
