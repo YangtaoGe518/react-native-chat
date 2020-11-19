@@ -14,7 +14,6 @@ const ChatRoomScreen = () => {
     const route = useRoute();
 
     const [messages, setMessages] = useState([]);
-    const [uid, setUid] = useState('');
 
     const getUserId = async () => {
        LocalStorage.load(
