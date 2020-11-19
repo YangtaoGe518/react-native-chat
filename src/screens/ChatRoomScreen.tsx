@@ -20,23 +20,41 @@ const ChatRoomScreen = () => {
        LocalStorage.load(
             {key: "user", id:'1'}
         ).then((res) => {
-            console.log(res)
+            // console.log(res)
        });
+    }
+    const getMessages = async () => {
+        LocalStorage.load(
+            {key: 'chatroom', id: '1'}
+        ).then((res) => {
+            setMessages(res)
+            // console.log(res)
+        })
+    }
+
+    const saveMessages = async (messages: any) => {
+        LocalStorage.save({
+            key: 'chatroom',
+            id: '1',
+            data: messages
+        })
     }
 
     useEffect(() => {
-        getUserId()
+        getMessages()
     })
 
-    const onSend = useCallback((messages = []) => {
-        setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
-    }, [])
+    const onSend = async (newMessages = []) => {
+        await setMessages(GiftedChat.append(messages, newMessages));
+        const newMessageList = messages.concat(newMessages)
+        saveMessages(newMessageList)
+    }
 
     return (
         <ImageBackground style={{width: '100%', height: '100%'}} source={BackgroundImg}>
             <GiftedChat
                 messages={messages}
-                onSend={messages => onSend(messages)}
+                onSend={newMessage => onSend(newMessage)}
                 user={{
                     _id: 1,
                 }}
