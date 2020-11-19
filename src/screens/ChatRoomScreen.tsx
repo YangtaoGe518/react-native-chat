@@ -46,7 +46,7 @@ const ChatRoomScreen = () => {
 
     const onSend = async (newMessages = []) => {
         await setMessages(GiftedChat.append(messages, newMessages));
-        const newMessageList = messages.concat(newMessages)
+        const newMessageList = newMessages.concat(messages)
         saveMessages(newMessageList)
     }
 
