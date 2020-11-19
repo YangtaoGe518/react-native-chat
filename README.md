@@ -29,9 +29,15 @@ yarn start
 
 The Expo Metro bundler will automatically start on your web browser
 
+## Instructions
+
 The account is hardcode:
 * username: admin
 * password: adminadmin
+
+Data storage is implemented with `asyncStorage` in react native, and it is encapsulated by `./src/model/LocalStorage.ts`,
+you can remove the current data stored on your mobile phone by clicking the *Clear Data* button on the **User** tab,
+and test the data persistence by clicking the *Log Out* button on the tab.
 
 ## App Walks Through
 * Login Screen 
