@@ -8,29 +8,30 @@ import ChatMessage from "../components/ChatMessage";
 import BackgroundImg from '../../assets/background.png';
 import chatRoomData from '../data/Chats';
 import InputBox from "../components/InputBox";
+import LocalStorage from "../model/LocalStorage";
 
 const ChatRoomScreen = () => {
     const route = useRoute();
 
     const [messages, setMessages] = useState([]);
+    const [uid, setUid] = useState('');
+
+    const getUserId = async () => {
+       LocalStorage.load(
+            {key: "user", id:'1'}
+        ).then((res) => {
+            console.log(res)
+       });
+    }
+
     useEffect(() => {
-        setMessages([
-            {
-                _id: 1,
-                text: 'Hello developer',
-                createdAt: new Date(),
-                user: {
-                    _id: 2,
-                    name: 'React Native',
-                    avatar: 'https://placeimg.com/140/140/any',
-                },
-            },
-        ])
-    }, [])
+        getUserId()
+    })
 
     const onSend = useCallback((messages = []) => {
         setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
     }, [])
+
     return (
         <ImageBackground style={{width: '100%', height: '100%'}} source={BackgroundImg}>
             <GiftedChat

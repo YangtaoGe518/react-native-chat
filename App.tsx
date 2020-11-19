@@ -15,6 +15,7 @@ import MainTabScreen from "./src/screens/MainTabScreen";
 import RootScreen from "./src/screens/RootScreen";
 import { userList } from "./src/model/User";
 import ChatRoomScreen from "./src/screens/ChatRoomScreen";
+import LocalStorage from "./src/model/LocalStorage";
 
 const Stack = createStackNavigator();
 
@@ -76,7 +77,16 @@ export default function App() {
                 try {
                     userToken = uuidv4();
                     // console.log(userToken);
-                    await AsyncStorage.setItem('userToken', userToken);
+                    // await AsyncStorage.setItem('userToken', userToken);
+                    const user = {
+                        ...validatedUsers[0],
+                        token: userToken,
+                    }
+                    await LocalStorage.save({
+                        key: 'user',
+                        id:'1',
+                        data: user
+                    });
                 } catch (e) {
                     console.log(e);
                 }
