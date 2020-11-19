@@ -43,6 +43,7 @@ const ChatRoomScreen = () => {
             id: chatroomId,
             data: {
                 ... chatRoom,
+                lastMessage: messages[0],
                 messages: messages
             }
         })
