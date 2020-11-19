@@ -14,6 +14,8 @@ const ChatRoomScreen = () => {
     const chatroomId = route.params.id;
     //@ts-ignore
     const chatRoom = route.params.chatroom;
+    //@ts-ignore
+    const member = route.params.member;
 
     const [messages, setMessages] = useState([]);
 
@@ -42,7 +44,15 @@ const ChatRoomScreen = () => {
             key: 'chatroom',
             id: chatroomId,
             data: {
-                ... chatRoom,
+                id: chatroomId,
+                members: [
+                    {
+                        id: '1',
+                        name: 'Admin',
+                        avatar: 'https://api.adorable.io/avatars/80/yangtao.ge@adorable.io.png',
+                    },
+                    member
+                ],
                 lastMessage: messages[0],
                 messages: messages
             }

@@ -1,45 +1,41 @@
-export default [{
-    id: '1',
-    name: 'Admin',
-    imageUri: 'https://api.adorable.io/avatars/80/yangtao.ge@adorable.io.png',
-}, {
-    id: '2',
+export default [ {
+    _id: '2',
     name: 'Lukas',
-    imageUri: 'https://eu.ui-avatars.com/api/?background=random&name=Lukas',
+    avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Lukas',
 }, {
-    id: '3',
+    _id: '3',
     name: 'Dani',
-    imageUri: 'https://eu.ui-avatars.com/api/?background=random&name=Dani',
+    avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Dani',
 }, {
-    id: '4',
+    _id: '4',
     name: 'Alex',
-    imageUri: 'https://eu.ui-avatars.com/api/?background=random&name=Alex',
+    avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Alex',
 }, {
-    id: '5',
+    _id: '5',
     name: 'Vlad',
-    imageUri: 'https://eu.ui-avatars.com/api/?background=random&name=Vlad',
+    avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Vlad',
 }, {
-    id: '6',
+    _id: '6',
     name: 'Elon Musk',
-    imageUri: 'https://eu.ui-avatars.com/api/?background=random&name=Elon+Musk',
+    avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Elon+Musk',
 }, {
-    id: '7',
+    _id: '7',
     name: 'Adrian',
-    imageUri: 'https://eu.ui-avatars.com/api/?background=random&name=Adrian',
+    avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Adrian',
 }, {
-    id: '8',
+    _id: '8',
     name: 'Borja',
-    imageUri: 'https://eu.ui-avatars.com/api/?background=random&name=Borja',
+    avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Borja',
 }, {
-    id: '9',
+    _id: '9',
     name: 'Mom',
-    imageUri: 'https://eu.ui-avatars.com/api/?background=random&name=Mom',
+    avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Mom',
 }, {
-    id: '10',
+    _id: '10',
     name: 'Angelina Jolie',
-    imageUri: 'https://eu.ui-avatars.com/api/?background=random&name=Angelina+Jolie',
+    avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Angelina+Jolie',
 },{
-    id: '11',
+    _id: '11',
     name: 'Terry Williams',
-    imageUri: 'https://eu.ui-avatars.com/api/?background=random&name=Terry+Williams',
+    avatar: 'https://eu.ui-avatars.com/api/?background=random&name=Terry+Williams',
 }]

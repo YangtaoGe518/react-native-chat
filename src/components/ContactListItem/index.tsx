@@ -22,8 +22,9 @@ const ContactListItem = (props: ContactListItemProps) => {
 
     const onClick = () => {
         navigation.navigate("ChatRoom", {
-            id: member.id,
-            name: member.name
+            id: member._id,
+            name: member.name,
+            member: member
         })
     }
 
@@ -31,7 +32,7 @@ const ContactListItem = (props: ContactListItemProps) => {
         <TouchableWithoutFeedback onPress={onClick}>
             <View style={styles.container}>
                 <View style={styles.lefContainer}>
-                    <Image source={{ uri: member.imageUri }} style={styles.avatar}/>
+                    <Image source={{ uri: member.avatar }} style={styles.avatar}/>
 
                     <View style={styles.midContainer}>
                         <Text style={styles.username}>{member.name}</Text>

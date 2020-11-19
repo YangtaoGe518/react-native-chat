@@ -37,7 +37,7 @@ const ContactScreen = (navigation: any) => {
                     style={{width: '100%'}}
                     data={contacts}
                     renderItem={({ item }) => <ContactListItem member={item} />}
-                    keyExtractor={(item) => item.id}
+                    keyExtractor={(item) => item._id}
                 />
         </View>
     );

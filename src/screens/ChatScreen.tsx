@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, Button, StyleSheet, StatusBar, FlatList} from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import {createStackNavigator} from "@react-navigation/stack";
 
 import ChatListItem from '../components/ChatListItem';
-import chatRooms from '../data/ChatRooms';
+import LocalStorage from "../model/LocalStorage";
+import {ChatRoom} from "../model/Types";
 
 const ChatStack = createStackNavigator();
 
@@ -26,6 +27,24 @@ const ChatStackScreen = ({navigation}: any) => (
 
 const ChatScreen = ({navigation}: any) => {
     const theme = useTheme();
+
+    const [chatRooms, setChatRooms] = useState([]);
+    const getActiveChatRooms = async () => {
+        await LocalStorage.getAllDataForKey('chatroom')
+            .then((chats:ChatRoom[]) => {
+                // console.log(chats);
+                setChatRooms(chats)
+
+            })
+            .catch((e) => {
+
+        });
+    }
+
+    useEffect(() => {
+        getActiveChatRooms()
+    })
+
 
     return (
         <View style={styles.container}>
