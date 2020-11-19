@@ -21,10 +21,6 @@ import { userList }from "../model/User";
 
 const SignInScreen = ({navigation}: any) => {
 
-    const { colors } = useTheme();
-
-    const theme = useTheme();
-
     const [data, setData] = React.useState({
         username: '',
         password: '',

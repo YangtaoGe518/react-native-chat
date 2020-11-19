@@ -33,8 +33,8 @@ const ChatScreen = ({navigation}: any) => {
         await LocalStorage.getAllDataForKey('chatroom')
             .then((chats:ChatRoom[]) => {
                 // console.log(chats);
+                //@ts-ignore
                 setChatRooms(chats)
-
             })
             .catch((e) => {
 

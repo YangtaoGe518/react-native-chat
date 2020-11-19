@@ -22,7 +22,6 @@ const ChatListItem = (props: ChatListItemProps) => {
         navigation.navigate("ChatRoom", {
             id: chatRoom.id,
             name: member.name,
-            chatroom: chatRoom,
             member: member
         })
     }

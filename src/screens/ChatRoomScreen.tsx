@@ -13,8 +13,6 @@ const ChatRoomScreen = () => {
     //@ts-ignore
     const chatroomId = route.params.id;
     //@ts-ignore
-    const chatRoom = route.params.chatroom;
-    //@ts-ignore
     const member = route.params.member;
 
     const [messages, setMessages] = useState([]);
@@ -81,12 +79,6 @@ const ChatRoomScreen = () => {
         </ImageBackground>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    }
-})
 
 export default ChatRoomScreen
 

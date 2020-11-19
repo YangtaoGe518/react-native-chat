@@ -27,10 +27,6 @@ const ContactStackScreen = ({navigation}: any) => (
 
 const ContactScreen = (navigation: any) => {
 
-    const { colors } = useTheme();
-
-    const theme = useTheme();
-
     return (
         <View style={styles.container}>
                 <FlatList
