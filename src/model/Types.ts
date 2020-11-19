@@ -6,20 +6,21 @@ export interface User {
 }
 
 export type Member = {
-    id: string,
+    _id: string,
     name: string,
-    imageUri: string,
+    avatar: string,
 }
 
 export type Message = {
-    id: string,
-    content: string,
+    _id: string | number,
+    text: string,
     createdAt: string,
-    member?: Member,
+    user?: Member,
 }
 
 export type ChatRoom = {
-    id: string;
+    id: string | number;
     members: Member[],
     lastMessage: Message,
+    messages?: Message[]
 }

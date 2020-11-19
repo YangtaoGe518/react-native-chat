@@ -3,11 +3,8 @@ import {ImageBackground, FlatList, KeyboardAvoidingView, Platform, StyleSheet, V
 import {useRoute} from '@react-navigation/native';
 import {GiftedChat} from "react-native-gifted-chat";
 
-import ChatMessage from "../components/ChatMessage";
 // @ts-ignore
 import BackgroundImg from '../../assets/background.png';
-import chatRoomData from '../data/Chats';
-import InputBox from "../components/InputBox";
 import LocalStorage from "../model/LocalStorage";
 
 const ChatRoomScreen = () => {
@@ -15,6 +12,8 @@ const ChatRoomScreen = () => {
 
     //@ts-ignore
     const chatroomId = route.params.id;
+    //@ts-ignore
+    const chatRoom = route.params.chatroom;
 
     const [messages, setMessages] = useState([]);
 
@@ -29,7 +28,7 @@ const ChatRoomScreen = () => {
         LocalStorage.load(
             {key: 'chatroom', id:chatroomId}
         ).then((res) => {
-            setMessages(res)
+            setMessages(res.messages)
             // console.log(res)
         }).catch((e) => {
             if(e.name === 'NotFoundError'){
@@ -42,7 +41,10 @@ const ChatRoomScreen = () => {
         LocalStorage.save({
             key: 'chatroom',
             id: chatroomId,
-            data: messages
+            data: {
+                ... chatRoom,
+                messages: messages
+            }
         })
     }
 

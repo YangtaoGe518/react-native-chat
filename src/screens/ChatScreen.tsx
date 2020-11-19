@@ -5,7 +5,6 @@ import {createStackNavigator} from "@react-navigation/stack";
 
 import ChatListItem from '../components/ChatListItem';
 import chatRooms from '../data/ChatRooms';
-import ChatRoomScreen from "./ChatRoomScreen";
 
 const ChatStack = createStackNavigator();
 
@@ -26,15 +25,11 @@ const ChatStackScreen = ({navigation}: any) => (
 );
 
 const ChatScreen = ({navigation}: any) => {
-
-    const { colors } = useTheme();
-
     const theme = useTheme();
 
     return (
         <View style={styles.container}>
             <StatusBar barStyle= { theme.dark ? "light-content" : "dark-content" }/>
-            {/*<Text style={{color: colors.text}}>Chat Screen</Text>*/}
             <FlatList
                 style={{width: '100%'}}
                 data={chatRooms}

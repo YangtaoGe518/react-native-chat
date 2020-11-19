@@ -21,7 +21,8 @@ const ChatListItem = (props: ChatListItemProps) => {
     const onClick = () => {
         navigation.navigate("ChatRoom", {
             id: chatRoom.id,
-            name: member.name
+            name: member.name,
+            chatroom: chatRoom
         })
     }
 
@@ -29,11 +30,11 @@ const ChatListItem = (props: ChatListItemProps) => {
         <TouchableWithoutFeedback onPress={onClick}>
             <View style={styles.container}>
                 <View style={styles.lefContainer}>
-                    <Image source={{uri: member.imageUri}} style={styles.avatar}/>
+                    <Image source={{uri: member.avatar}} style={styles.avatar}/>
 
                     <View style={styles.midContainer}>
                         <Text style={styles.username}>{member.name}</Text>
-                        <Text numberOfLines={2} style={styles.lastMessage}>{chatRoom.lastMessage.content}</Text>
+                        <Text numberOfLines={2} style={styles.lastMessage}>{chatRoom.lastMessage.text}</Text>
                     </View>
 
                 </View>
