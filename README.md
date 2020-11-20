@@ -29,6 +29,8 @@ yarn start
 
 The Expo Metro bundler will automatically start on your web browser
 
+**Expo Online Version**: https://expo.io/@terryg/projects/react-native-chat
+
 ## Instructions
 
 The account is hardcode:
